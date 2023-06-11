@@ -1,0 +1,59 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/navigation.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="~/Content/images/fav.ico">
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body style="padding:0;">
+    <!-- Navigation -->
+    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        <ul>
+            <li><a href="#">LOGO</a></li>
+            <li><a href="/">HOME</a></li>
+            <li class="dropdown">
+                <a href="#">SERVICES</a>
+                <ul class="sub-menu">
+                    <li>@Html.ActionLink("Conferences", "Conference", "Home")</li>
+                    <li><a href="#">Service 2</a></li>
+                    <li><a href="#">Service 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">ABOUT US</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Service 1</a></li>
+                    <li><a href="#">Service 2</a></li>
+                    <li><a href="#">Service 3</a></li>
+                </ul>
+            </li>
+            <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
+        </ul>
+        <div class="btn1">
+            <a href="#" class="btncreate">Create a conference</a>
+            <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
+        </div>
+    </nav>
+    <!--Hero-->
+  @*  <section class="hero">
+    </section>*@
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

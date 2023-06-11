@@ -1,0 +1,27 @@
+﻿
+@model Conference.Models.Participant
+
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Chemin vers votre layout principal
+}
+
+
+<h2>SignIn</h2>
+
+@using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nom)
+        @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nom)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.password)
+        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.password)
+    </div>
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+}

@@ -6,6 +6,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml"; // Chemin vers votre layout principal
 }
 
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #337ab7;
+            box-shadow: 0 0 5px rgba(51, 122, 183, 0.5);
+        }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #337ab7;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #337ab7;
+    }
+
+        .btn-primary:hover {
+            background-color: #286090;
+        }
+
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+        p a {
+            color: #337ab7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            p a:hover {
+                text-decoration: underline;
+            }
+
+</style>
 
 <h2>SignIn</h2>
 
@@ -24,4 +92,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">S'inscrire</button>
+    <p>You have account ? click here :@Html.ActionLink("Login", "Login", "Home")</p>
 }

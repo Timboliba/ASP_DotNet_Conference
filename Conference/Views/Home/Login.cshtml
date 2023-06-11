@@ -58,6 +58,20 @@
         background-color: #337ab7;
         border-color: #2e6da4;
     }
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+        p a {
+            color: #337ab7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            p a:hover {
+                text-decoration: underline;
+            }
 </style>
 
 <h2>Login</h2>
@@ -81,6 +95,7 @@
     <div class="form-group">
         <input type="submit" value="Login" class="btn btn-primary" />
     </div>
+    <p>You have not a account ? click here :@Html.ActionLink("SignIn", "SignIn", "Home")</p>
 }
 
 

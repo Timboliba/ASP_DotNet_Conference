@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +9,10 @@ namespace Conference.Models
 {
     public class Comite
     {
-        public Guid Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string Nom { get; set; }
-        public List<MembresComite> MembresComites { get; set; }
+        public List<Guid> MembresComites { get; set; }
     }
 }

@@ -14,9 +14,8 @@
 </head>
 <body style="padding:0;">
     <!-- Navigation -->
-    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+@*    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
         <ul>
-            <li><a href="#">LOGO</a></li>
             <li><a href="/">HOME</a></li>
             <li class="dropdown">
                 <a href="#">SERVICES</a>
@@ -37,15 +36,104 @@
             <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
         </ul>
         <div class="btn1">
-            <a href="#" class="btncreate">Create a conference</a>
-            <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
+            @if (Session["user"] == null)
+            {
+                <span class="btncreate">@Html.ActionLink("Create a conference", "Login", "Home")</span>
+            }
+            else
+            {
+                <a href="#" class="btncreate">Create a conference</a>
+            }
+            @if (Session["user"] == null)
+            {
+                <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
+            }
+            else
+            {
+                <span class="btnlog">Hello</span>
+            }
         </div>
+    </nav>*@
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2" href="/">
+                <img src="~/Content/images/logos.png"
+                     height="30"
+                     alt="MDB Logo"
+                     loading="lazy"
+                     style="margin-top: -10px;" />
+            </a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarButtonsExample"
+                    aria-controls="navbarButtonsExample"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.ActionLink("Listes Conferences", "GetConference", "Home")
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Nous Contacter", "Contact", "Home")
+                </li>
+                </ul>
+                <!-- Left links -->
+
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-link px-3 me-2">
+                        @if (Session["user"] == null)
+                        {
+                            <span class="">@Html.ActionLink("Login", "Login", "Home")</span>
+
+                        }
+                        else
+                        {
+                           @* Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
+                            <span>@Html.ActionLink("Logout","Logout","Home")</span>
+                        }
+                    </button>
+                    <button type="button" class="btn me-3">
+                        @if (Session["user"] == null)
+                        {
+                            <span style="text-decoration:none">@Html.ActionLink("Create a conference", "Login", "Home")</span>
+                        }
+                        else
+                        {
+                            Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
+                            @*if (@user.Role == "admin")
+                                {
+                                    @Html.ActionLink("Create a conference", "AddConference", "Home")
+                                }*@
+                            <span style="text-decoration:none">@user.Role</span>
+
+                        }
+                    </button>
+                   
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
     </nav>
+    <!-- Navbar -->
     <!--Hero-->
     @*  <section class="hero">
         </section>*@
 
-    <div class="container body-content" style="height:600px">
+    <div class="container body-content">
         @RenderBody()
 
 

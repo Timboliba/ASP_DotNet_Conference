@@ -17,11 +17,10 @@ namespace Conference.Models
             base.OnModelCreating(modelBuilder);
 
         }
-        public DbSet<Administrateur> Administrateurs { get; set; }
+       
         public DbSet<Comite> Comites { get; set; }
         public DbSet<Conferencier> Conferenciers { get; set; }
         public DbSet<Congre> Congres { get; set; }
-        public DbSet<Lieu> Lieus { get; set; }
         public DbSet<MembresComite> MembresComites { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Responsable> Responsables { get; set; }

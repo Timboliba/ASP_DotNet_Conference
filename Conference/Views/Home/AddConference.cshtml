@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "AddConference";
+}
+
+@model Conference.Models.Congre
+<h2>AddConference</h2>
+
+
+@using (Html.BeginForm("AddConference", "Home", FormMethod.Post, new { @class = "conference-form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.titre)
+        @Html.TextBoxFor(model => model.titre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.titre)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateDebut)
+        @Html.TextBoxFor(model => model.DateDebut, new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.DateDebut)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateFin)
+        @Html.TextBoxFor(model => model.DateFin, new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(model => model.DateFin)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details)
+        @Html.TextAreaFor(model => model.Details, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Details)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Lieu)
+        @Html.TextBoxFor(model => model.Lieu, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Lieu)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer</button>
+}
+

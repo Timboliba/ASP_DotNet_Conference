@@ -1,3 +1,4 @@
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\Conference\Conference\bin\Conference.dll.config
 C:\Users\HP\source\repos\Conference\Conference\bin\Conference.dll
 C:\Users\HP\source\repos\Conference\Conference\bin\Conference.pdb
@@ -75,10 +76,12 @@ C:\Users\HP\source\repos\Conference\Conference\bin\fr\System.Web.Webpages.Deploy
 C:\Users\HP\source\repos\Conference\Conference\bin\fr\System.Web.Webpages.Razor.resources.dll
 C:\Users\HP\source\repos\Conference\Conference\bin\fr\System.Web.Helpers.resources.dll
 C:\Users\HP\source\repos\Conference\Conference\bin\fr\System.Web.Mvc.resources.dll
-C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.CopyComplete
 C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.dll
 C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.pdb
-C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.Migrations.firstMigration.resources
-C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.GenerateResource.cache
 C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.Migrations._1st.resources
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.Migrations._2.resources
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.Migrations._3rd.resources
+C:\Users\HP\source\repos\Conference\Conference\obj\Debug\Conference.Migrations._4rd.resources

@@ -10,32 +10,27 @@ namespace Conference.Controllers
 {
     public class HomeController : Controller
     {
-        DataEntities entities = new DataEntities();
-        public UnitOfWork<Lieu> unitLieu;
-        public UnitOfWork<Participant> unitParticipant;
+        private DataEntities entity = new DataEntities();
+        private UnitOfWork<Participant> unitParticipant;
+        private UnitOfWork<Congre> unitCongre;
+
         public HomeController()
         {
-            this.unitLieu = new UnitOfWork<Lieu>();
             this.unitParticipant = new UnitOfWork<Participant>();
+            this.unitCongre = new UnitOfWork<Congre>();
         }
+
         // GET: Home
         public ActionResult Index()
         {
-            var model = unitLieu.Entity.GetAll().First();
-            return View(model);
+            return View();
         }
 
         public ActionResult About()
         {
             return View();
         }
-
-        // GET: Conference
-        public ActionResult Conference()
-        {
-            return View();
-        }
-
+      
         public ActionResult Contact()
         {
             return View();
@@ -43,33 +38,83 @@ namespace Conference.Controllers
 
         public ActionResult Login()
         {
-            var model = unitParticipant.Entity.GetAll().First();
+            Participant model = new Participant();
+            //var model = unitParticipant.Entity.GetAll().First();
             return View(model);
         }
+
+        // Authentication
+        [HttpPost]
+        public ActionResult Login(Participant p)
+        {
+            var model = unitParticipant.Entity.GetAll().ToList();
+            if (p.Nom != null && p.Password != null)
+            {
+                foreach (Participant part in model)
+                {
+                    if (p.Nom == part.Nom && p.Password == part.Password)
+                    {
+                        Session["user"] = p;
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View();
+
+            }
+            return View(p);
+        }
+
         public ActionResult SignIn()
         {
             Participant p = new Participant();
             return View(p);
         }
 
+        // Registration
         [HttpPost]
-        protected ActionResult SignIn(Participant p)
+        public ActionResult SignIn(Participant p)
         {
-            if (ModelState.IsValid)
+            
+            if (p.Nom != null && p.Password != null)
             {
-                // Effectuez les opérations nécessaires, par exemple :
-                // - Stockez les données dans une base de données
-                // - Envoyez un e-mail de confirmation, etc.
-
-                Console.WriteLine(p.Nom +" "+p.password);
-
-                /*unitParticipant.Save();
-                                            */
-                // Redirigez vers une page de succès ou une autre action
-                return RedirectToAction("Index");
+                p.Role = "user";
+                entity.Participants.Add(p);
+                entity.SaveChanges();
+                return RedirectToAction("Contact");
             }
             return View(p);
         }
 
+        public ActionResult AddConference()
+        {
+            Congre c = new Congre();
+            return View(c);
+        }
+        [HttpPost]
+        public ActionResult AddConference(Congre c)
+        {
+            
+            if(c.titre!=null && c.Lieu!=null && c.Details!=null && c.DateDebut!=null && c.DateFin != null)
+            {
+                entity.Congres.Add(c);
+                entity.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(c);
+        }
+
+        [HttpGet]
+        public ActionResult GetConference()
+        {
+            var model = unitCongre.Entity.GetAll().ToList();
+            ViewBag.ListCongres = model;
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index");
+        }
     }
 }

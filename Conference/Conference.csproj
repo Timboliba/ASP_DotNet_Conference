@@ -95,8 +95,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-icons.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\conference.jpg" />
     <Content Include="Content\images\fav.ico" />
+    <Content Include="Content\images\logos.png" />
     <Content Include="Content\images\R.jpg" />
     <Content Include="Content\images\salle-conference.jpg" />
     <Content Include="Content\images\salle-de-conference-scaled.jpg" />
@@ -113,17 +116,27 @@
     </Compile>
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\202306032330345_firstMigration.cs" />
-    <Compile Include="Migrations\202306032330345_firstMigration.designer.cs">
-      <DependentUpon>202306032330345_firstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202306121535496_1st.cs" />
+    <Compile Include="Migrations\202306121535496_1st.designer.cs">
+      <DependentUpon>202306121535496_1st.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306121607274_2.cs" />
+    <Compile Include="Migrations\202306121607274_2.designer.cs">
+      <DependentUpon>202306121607274_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306121609286_3rd.cs" />
+    <Compile Include="Migrations\202306121609286_3rd.designer.cs">
+      <DependentUpon>202306121609286_3rd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306121753433_4rd.cs" />
+    <Compile Include="Migrations\202306121753433_4rd.designer.cs">
+      <DependentUpon>202306121753433_4rd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Administrateur.cs" />
     <Compile Include="Models\Comite.cs" />
     <Compile Include="Models\Conferencier.cs" />
     <Compile Include="Models\Congre.cs" />
     <Compile Include="Models\DataEntities.cs" />
-    <Compile Include="Models\Lieu.cs" />
     <Compile Include="Models\MembresComite.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Responsable.cs" />
@@ -139,9 +152,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Conference.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Home\AddConference.cshtml" />
+    <Content Include="Views\Home\GetConference.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -153,8 +167,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202306032330345_firstMigration.resx">
-      <DependentUpon>202306032330345_firstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202306121535496_1st.resx">
+      <DependentUpon>202306121535496_1st.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121607274_2.resx">
+      <DependentUpon>202306121607274_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121609286_3rd.resx">
+      <DependentUpon>202306121609286_3rd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306121753433_4rd.resx">
+      <DependentUpon>202306121753433_4rd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

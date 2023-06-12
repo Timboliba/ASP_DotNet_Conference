@@ -44,7 +44,7 @@
         font-size: 14px;
         font-weight: bold;
         color: #fff;
-        background-color: #337ab7;
+        /*background-color: #337ab7;*/
         border: none;
         border-radius: 3px;
         cursor: pointer;
@@ -72,7 +72,6 @@
             p a:hover {
                 text-decoration: underline;
             }
-
 </style>
 
 <h2>SignIn</h2>
@@ -86,10 +85,11 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.password)
-        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.password)
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)
     </div>
+
 
     <button type="submit" class="btn btn-primary">S'inscrire</button>
     <p>You have account ? click here :@Html.ActionLink("Login", "Login", "Home")</p>

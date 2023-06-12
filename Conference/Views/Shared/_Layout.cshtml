@@ -14,46 +14,46 @@
 </head>
 <body style="padding:0;">
     <!-- Navigation -->
-@*    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-        <ul>
-            <li><a href="/">HOME</a></li>
-            <li class="dropdown">
-                <a href="#">SERVICES</a>
-                <ul class="sub-menu">
-                    <li>@Html.ActionLink("Conferences", "Conference", "Home")</li>
-                    <li><a href="#">Service 2</a></li>
-                    <li><a href="#">Service 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">ABOUT US</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Service 1</a></li>
-                    <li><a href="#">Service 2</a></li>
-                    <li><a href="#">Service 3</a></li>
-                </ul>
-            </li>
-            <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
-        </ul>
-        <div class="btn1">
-            @if (Session["user"] == null)
-            {
-                <span class="btncreate">@Html.ActionLink("Create a conference", "Login", "Home")</span>
-            }
-            else
-            {
-                <a href="#" class="btncreate">Create a conference</a>
-            }
-            @if (Session["user"] == null)
-            {
-                <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
-            }
-            else
-            {
-                <span class="btnlog">Hello</span>
-            }
-        </div>
-    </nav>*@
+    @*    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#">SERVICES</a>
+                    <ul class="sub-menu">
+                        <li>@Html.ActionLink("Conferences", "Conference", "Home")</li>
+                        <li><a href="#">Service 2</a></li>
+                        <li><a href="#">Service 3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">ABOUT US</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Service 1</a></li>
+                        <li><a href="#">Service 2</a></li>
+                        <li><a href="#">Service 3</a></li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
+            </ul>
+            <div class="btn1">
+                @if (Session["user"] == null)
+                {
+                    <span class="btncreate">@Html.ActionLink("Create a conference", "Login", "Home")</span>
+                }
+                else
+                {
+                    <a href="#" class="btncreate">Create a conference</a>
+                }
+                @if (Session["user"] == null)
+                {
+                    <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
+                }
+                else
+                {
+                    <span class="btnlog">Hello</span>
+                }
+            </div>
+        </nav>*@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -88,7 +88,7 @@
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Nous Contacter", "Contact", "Home")
-                </li>
+                    </li>
                 </ul>
                 <!-- Left links -->
 
@@ -101,8 +101,8 @@
                         }
                         else
                         {
-                           @* Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
-                            <span>@Html.ActionLink("Logout","Logout","Home")</span>
+                            @* Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
+                            <span>@Html.ActionLink("Logout", "Logout", "Home")</span>
                         }
                     </button>
                     <button type="button" class="btn me-3">
@@ -121,7 +121,7 @@
 
                         }
                     </button>
-                   
+
                 </div>
             </div>
             <!-- Collapsible wrapper -->
@@ -130,17 +130,50 @@
     </nav>
     <!-- Navbar -->
     <!--Hero-->
-    @*  <section class="hero">
-        </section>*@
+    <section class="hero" style="margin-top:20px">
+    </section>
+
 
     <div class="container body-content">
         @RenderBody()
 
-
     </div><hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    @*<footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>About Us</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut efficitur leo.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@example.com</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled social-icons">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div><hr/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center">© 2023 Your Company. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

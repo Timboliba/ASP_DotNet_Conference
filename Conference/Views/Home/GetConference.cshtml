@@ -20,8 +20,15 @@
                 <li class="list-group-item px-4">Lieu: @item.Lieu</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Participer</a>
-                <a href="#" class="card-link">Supprimer</a>
+                @Html.ActionLink("Participer", "Participer", "Home")
+                @if (Session["user"] != null)
+                {
+                    Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
+                    if (user.Role == "admin")
+                    {
+                        @Html.ActionLink("Supprimer", "Supprimer", "Home")
+                    }
+                }
             </div>
         </div>
     }

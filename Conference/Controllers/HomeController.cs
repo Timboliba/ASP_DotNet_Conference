@@ -14,6 +14,7 @@ namespace Conference.Controllers
         private UnitOfWork<Participant> unitParticipant;
         private UnitOfWork<Congre> unitCongre;
 
+
         public HomeController()
         {
             this.unitParticipant = new UnitOfWork<Participant>();
@@ -110,10 +111,17 @@ namespace Conference.Controllers
             ViewBag.ListCongres = model;
             return View();
         }
-
+        
         public ActionResult Logout()
         {
             Session.Clear();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Supprimer(int id, Congre congre)
+        {
+            entity.Congres.Find(congre.Id);
+            entity.Congres.Remove(congre);
             return RedirectToAction("Index");
         }
     }

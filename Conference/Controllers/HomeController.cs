@@ -13,12 +13,14 @@ namespace Conference.Controllers
         private DataEntities entity = new DataEntities();
         private UnitOfWork<Participant> unitParticipant;
         private UnitOfWork<Congre> unitCongre;
+        private UnitOfWork<Participation> unitParticipation;
 
 
         public HomeController()
         {
             this.unitParticipant = new UnitOfWork<Participant>();
             this.unitCongre = new UnitOfWork<Congre>();
+            this.unitParticipation = new UnitOfWork<Participation>();
         }
 
         // GET: Home
@@ -109,19 +111,33 @@ namespace Conference.Controllers
         {
             var model = unitCongre.Entity.GetAll().ToList();
             ViewBag.ListCongres = model;
-            return View();
+            Participation participation = new Participation();
+            return View(participation);
         }
-        
+
+        [HttpPost]
+        public ActionResult GetConference(Participation p)
+        {
+            if (p.Utilisateur != null && p.ConferenceId != 0)
+            {
+                entity.Participations.Add(p);
+                entity.SaveChanges();
+            }
+            return RedirectToAction("GetConference");
+     }
+
         public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Index");
         }
 
-        public ActionResult Supprimer(int id, Congre congre)
+        [HttpPost]
+        public ActionResult Supprimer(Participation p)
         {
-            entity.Congres.Find(congre.Id);
-            entity.Congres.Remove(congre);
+            Congre c =entity.Congres.Find(p.ConferenceId);
+            entity.Congres.Remove(c);
+            entity.SaveChanges();
             return RedirectToAction("Index");
         }
     }

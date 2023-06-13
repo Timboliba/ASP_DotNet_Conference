@@ -113,11 +113,10 @@
                         else
                         {
                             Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
-                            @*if (@user.Role == "admin")
+                            if (@user.Nom == "admin")
                                 {
                                     @Html.ActionLink("Create a conference", "AddConference", "Home")
-                                }*@
-                            <span style="text-decoration:none">@user.Role</span>
+                                }
 
                         }
                     </button>

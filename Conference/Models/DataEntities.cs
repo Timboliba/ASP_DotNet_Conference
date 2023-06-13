@@ -25,6 +25,8 @@ namespace Conference.Models
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Responsable> Responsables { get; set; }
         public DbSet<Session> Sessions { get; set; }
+
+        public DbSet<Participation> Participations { get; set; }
       
     }
 }

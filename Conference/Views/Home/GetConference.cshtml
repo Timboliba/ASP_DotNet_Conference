@@ -20,14 +20,48 @@
                 <li class="list-group-item px-4">Lieu: @item.Lieu</li>
             </ul>
             <div class="card-body">
-                @Html.ActionLink("Participer", "Participer", "Home")
+                @{@model Conference.Models.Participation
+                Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
+
+                using (Html.BeginForm("GetConference", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group " style="display:none;visibility:hidden;">
+                        @Html.LabelFor(model => model.Utilisateur, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Utilisateur, new { @class = "form-control", Value = (user != null ? user.Nom : string.Empty) })
+                        @Html.ValidationMessageFor(model => model.Utilisateur, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group"  style="display:none;visibility:hidden;">
+                        @Html.LabelFor(model => model.ConferenceId, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.ConferenceId, new { @class = "form-control", Value = item.Id })
+                        @Html.ValidationMessageFor(model => model.ConferenceId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Participer" class="btn btn-primary" />
+                    </div>
+                }
+                }
+
                 @if (Session["user"] != null)
                 {
-                    Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
-                    if (user.Role == "admin")
+                    @*Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
+                 if (user.Nom == "admin")
+                {
+                    using (Html.BeginForm("Supprimer", "Home", FormMethod.Post))
                     {
-                        @Html.ActionLink("Supprimer", "Supprimer", "Home")
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group "  style="display:none;visibility:hidden;">
+                            @Html.LabelFor(model => model.ConferenceId, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.ConferenceId, new { @class = "form-control", Value = item.Id })
+                            @Html.ValidationMessageFor(model => model.ConferenceId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Supprimer" class="btn btn-primary" />
+                        </div>
                     }
+                  }
                 }
             </div>
         </div>

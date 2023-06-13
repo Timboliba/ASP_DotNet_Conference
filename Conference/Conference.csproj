@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202306121753433_4rd.designer.cs">
       <DependentUpon>202306121753433_4rd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306130148327_5th.cs" />
+    <Compile Include="Migrations\202306130148327_5th.designer.cs">
+      <DependentUpon>202306130148327_5th.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comite.cs" />
     <Compile Include="Models\Conferencier.cs" />
@@ -139,6 +143,7 @@
     <Compile Include="Models\DataEntities.cs" />
     <Compile Include="Models\MembresComite.cs" />
     <Compile Include="Models\Participant.cs" />
+    <Compile Include="Models\Participation.cs" />
     <Compile Include="Models\Responsable.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306121753433_4rd.resx">
       <DependentUpon>202306121753433_4rd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306130148327_5th.resx">
+      <DependentUpon>202306130148327_5th.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

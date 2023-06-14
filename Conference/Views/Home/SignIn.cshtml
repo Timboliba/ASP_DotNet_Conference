@@ -72,25 +72,44 @@
             p a:hover {
                 text-decoration: underline;
             }
+
+    .content {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .right {
+        padding-top: 10px;
+        width: 25%;
+        margin-left: -40px;
+    }
 </style>
+<body>
+    <h2 style="margin-left: 20%">SignIn</h2>
+    <div class="content">
+        <div class="left">
 
-<h2>SignIn</h2>
+            @using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nom)
+                    @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Nom)
+                </div>
 
-@using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.Nom)
-        @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Nom)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                <p>You have account ? click here :@Html.ActionLink("Login", "Login", "Home")</p>
+            }
+        </div>
+        <div class="right">
+            <span>Accédez à un monde passionnant de connaissances,  développez votre réseau,  restez à jour dans votre domaine d'intérêt et de profiter des avantages d'une plateforme flexible et accessible. Rejoignez-nous dès maintenant et ne manquez pas l'occasion de vous enrichir intellectuellement et professionnellement. </span>
+        </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Password)
-    </div>
-
-
-    <button type="submit" class="btn btn-primary">S'inscrire</button>
-    <p>You have account ? click here :@Html.ActionLink("Login", "Login", "Home")</p>
-}
+</body>

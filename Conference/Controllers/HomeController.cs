@@ -110,6 +110,8 @@ namespace Conference.Controllers
         public ActionResult GetConference()
         {
             var model = unitCongre.Entity.GetAll().ToList();
+            var modelPart = unitParticipation.Entity.GetAll().ToList();
+            ViewBag.ListPart = modelPart;
             ViewBag.ListCongres = model;
             Participation participation = new Participation();
             return View(participation);
@@ -138,6 +140,32 @@ namespace Conference.Controllers
             Congre c =entity.Congres.Find(p.ConferenceId);
             entity.Congres.Remove(c);
             entity.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        /***********************************************/
+        [HttpGet]
+        public ActionResult GetGestion()
+        {
+            Participant part = new Participant();
+            if (Session["user"] != null)
+            {
+                var modelPart = unitParticipant.Entity.GetAll().ToList();
+                ViewBag.ListPart = modelPart; 
+            }
+            
+            return View(part);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Participant p)
+        {
+            
+                Participant P= entity.Participants.Find(p.Id);
+                entity.Participants.Remove(P);
+                entity.SaveChanges();
+           
             return RedirectToAction("Index");
         }
     }

@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "GetGestion";
+}
+
+@model Conference.Models.Participant
+
+
+<h2 style="margin-left: 14%">Gestion des utilisateurs</h2>
+
+<table class="table" style="width:50%;margin-left:15%">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOM</th>
+            <th scope="col">ROLE</th>
+            <th scope="col">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+        @foreach (var admin in ViewBag.ListPart as List<Conference.Models.Participant>)
+        {
+            if (admin.Nom != "superAdmin")
+            {
+                 <tr>
+                        <td>
+                            @admin.Id
+                        </td>
+                        <td>
+                            @admin.Nom
+                        </td>
+                        <td>
+                            @admin.Role
+                        </td>
+            
+             
+                        <td style="display:flex">
+                            <div class="form-group" style="display:inline;margin-right:8px">
+                                @Html.ActionLink("Edit", "Edit", new { id = admin.Id },new { @class = "btn btn-primary" })
+                            </div>
+
+                        
+
+                            @{
+                                using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-group " style="display:none;visibility:hidden;">
+                                        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Id, new { @class = "form-control", Value = admin.Id })
+                                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group" style="display:inline">
+                                        <input type="submit" value="Delete" class="btn btn-primary" />
+                                    </div>
+                                }
+                            }
+                        </td>
+                    </tr>
+
+        
+        }
+    }
+    </tbody>
+    </table>

@@ -3,13 +3,13 @@
     ViewBag.Title = "Liste des conferences";
 }
 
-<h2>@ViewBag.Title </h2>
+<h2 style="margin-left: 40px">@ViewBag.Title </h2>
 
 <div class="d-flex">
     @foreach (var item in ViewBag.ListCongres as List<Conference.Models.Congre>)
     {
         <div class="card m-5" style="width: 28rem;">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top" alt="Chicago Skyscrapers" />
+            <img src="~/Content/images/conferences.jpg" class="card-img-top" alt="Chicago Skyscrapers" />
             <div class="card-body">
                 <h5 class="card-title">@item.titre</h5>
                 <p class="card-text">@item.Details</p>
@@ -18,10 +18,27 @@
                 <li class="list-group-item px-4">Du : @item.DateDebut</li>
                 <li class="list-group-item px-4">Au :@item.DateFin</li>
                 <li class="list-group-item px-4">Lieu: @item.Lieu</li>
-            </ul>
-            <div class="card-body">
-                @{@model Conference.Models.Participation
-                Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
+            </ul>@*if(item.Id==Participation.ConferenceId && user.Nom==Participation.utilisateur){
+                     
+                  }*@
+        <div class="card-body">
+            @{@model Conference.Models.Participation
+            Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
+            bool hasParticipation = false;
+            foreach (var part in ViewBag.ListPart as List<Conference.Models.Participation>)
+            {
+                if (part.Utilisateur == (user != null ? user.Nom : string.Empty) && part.ConferenceId == item.Id)
+                {
+                    hasParticipation = true;
+                    <span>Vous participez!</span>
+                    break;
+                }
+
+
+            }
+            if (!hasParticipation)
+            {
+
 
                 using (Html.BeginForm("GetConference", "Home", FormMethod.Post))
                 {
@@ -32,7 +49,7 @@
                         @Html.TextBoxFor(model => model.Utilisateur, new { @class = "form-control", Value = (user != null ? user.Nom : string.Empty) })
                         @Html.ValidationMessageFor(model => model.Utilisateur, "", new { @class = "text-danger" })
                     </div>
-                    <div class="form-group"  style="display:none;visibility:hidden;">
+                    <div class="form-group" style="display:none;visibility:hidden;">
                         @Html.LabelFor(model => model.ConferenceId, htmlAttributes: new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ConferenceId, new { @class = "form-control", Value = item.Id })
                         @Html.ValidationMessageFor(model => model.ConferenceId, "", new { @class = "text-danger" })
@@ -41,18 +58,20 @@
                         <input type="submit" value="Participer" class="btn btn-primary" />
                     </div>
                 }
-                }
+            }
+            }
 
-                @if (Session["user"] != null)
-                {
-                    @*Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
-                 if (user.Nom == "admin")
+
+            @if (Session["user"] != null)
+            {
+                @*Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
+                if (user.Nom == "admin")
                 {
                     using (Html.BeginForm("Supprimer", "Home", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-group "  style="display:none;visibility:hidden;">
+                        <div class="form-group " style="display:none;visibility:hidden;">
                             @Html.LabelFor(model => model.ConferenceId, htmlAttributes: new { @class = "control-label" })
                             @Html.TextBoxFor(model => model.ConferenceId, new { @class = "form-control", Value = item.Id })
                             @Html.ValidationMessageFor(model => model.ConferenceId, "", new { @class = "text-danger" })
@@ -61,9 +80,9 @@
                             <input type="submit" value="Supprimer" class="btn btn-primary" />
                         </div>
                     }
-                  }
                 }
-            </div>
+            }
+        </div>
         </div>
     }
 </div>

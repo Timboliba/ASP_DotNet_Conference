@@ -7,6 +7,9 @@
 @model Conference.Models.Participant
 
 <style>
+    body{
+        height:100%;
+    }
     .form-group {
         margin-bottom: 15px;
     }
@@ -58,6 +61,7 @@
         background-color: #337ab7;
         border-color: #2e6da4;
     }
+
     p {
         margin-top: 20px;
         font-size: 14px;
@@ -72,31 +76,49 @@
             p a:hover {
                 text-decoration: underline;
             }
+
+      .content{
+          display:flex;
+          justify-content:space-evenly;
+      }
+
+      .right{
+        padding-top:10px;
+        width:25%;
+        margin-left:-40px;
+        
+      }
 </style>
+<body>
+    <h2 style="margin-left: 20%">Login</h2>
+    <div class="content">
+        <div class="left">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
 
-<h2>Login</h2>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+                </div>
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label" })
-        @Html.TextBoxFor(model => model.Nom, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+                <p>You have not a account ? click here :@Html.ActionLink("SignIn", "SignIn", "Home")</p>
+            }
+        </div>
+        <div class="right">
+            <span>Accédez à un monde passionnant de connaissances,  développez votre réseau,  restez à jour dans votre domaine d'intérêt et de profiter des avantages d'une plateforme flexible et accessible. Rejoignez-nous dès maintenant et ne manquez pas l'occasion de vous enrichir intellectuellement et professionnellement. </span>
+        </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Login" class="btn btn-primary" />
-    </div>
-    <p>You have not a account ? click here :@Html.ActionLink("SignIn", "SignIn", "Home")</p>
-}
-
+</body>
 
 

@@ -11,55 +11,34 @@
     <link href="~/Content/navigation.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="~/Content/images/logos.png">
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        .no-decoration {
+            text-decoration: none;
+            color:white;
+            font-weight:bolder;
+        }
+
+        li .no-decoration:hover {
+            color: #4ae9e8;
+        }
+
+        .log {
+            background-color: #4ae9e8;
+            border-radius:5px;
+            padding:10px;
+        }
+
+        .log .no-decoration:hover{
+            color:black;
+        }
+    </style>
 </head>
 <body style="padding:0;">
-    <!-- Navigation -->
-    @*    <nav style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:15px;padding-right:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li class="dropdown">
-                    <a href="#">SERVICES</a>
-                    <ul class="sub-menu">
-                        <li>@Html.ActionLink("Conferences", "Conference", "Home")</li>
-                        <li><a href="#">Service 2</a></li>
-                        <li><a href="#">Service 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">ABOUT US</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Service 1</a></li>
-                        <li><a href="#">Service 2</a></li>
-                        <li><a href="#">Service 3</a></li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
-            </ul>
-            <div class="btn1">
-                @if (Session["user"] == null)
-                {
-                    <span class="btncreate">@Html.ActionLink("Create a conference", "Login", "Home")</span>
-                }
-                else
-                {
-                    <a href="#" class="btncreate">Create a conference</a>
-                }
-                @if (Session["user"] == null)
-                {
-                    <span class="btnlog">@Html.ActionLink("Login", "Login", "Home")</span>
-                }
-                else
-                {
-                    <span class="btnlog">Hello</span>
-                }
-            </div>
-        </nav>*@
+  
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- Container wrapper -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color :black;">
         <div class="container">
-            <!-- Navbar brand -->
+            @*Logo*@
             <a class="navbar-brand me-2" href="/">
                 <img src="~/Content/images/logos.png"
                      height="30"
@@ -68,76 +47,68 @@
                      style="margin-top: -10px;" />
             </a>
 
-            <!-- Toggle button -->
-            <button class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarButtonsExample"
-                    aria-controls="navbarButtonsExample"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
             </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"> @Html.ActionLink("Listes Conferences", "GetConference", "Home", new { @class = "no-decoration" })</li>
 
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @*Création de conférence*@
                     <li class="nav-item">
-                        @Html.ActionLink("Listes Conferences", "GetConference", "Home")
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Nous Contacter", "Contact", "Home")
-                    </li>
-                </ul>
-                <!-- Left links -->
 
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-link px-3 me-2">
                         @if (Session["user"] == null)
                         {
-                            <span class="">@Html.ActionLink("Login", "Login", "Home")</span>
-
-                        }
-                        else
-                        {
-                            @* Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];*@
-                            <span>@Html.ActionLink("Logout", "Logout", "Home")</span>
-                        }
-                    </button>
-                    <button type="button" class="btn me-3">
-                        @if (Session["user"] == null)
-                        {
-                            <span style="text-decoration:none">@Html.ActionLink("Create a conference", "Login", "Home")</span>
+                            <span style="text-decoration:none">@Html.ActionLink("Create a conference", "Login", "Home", new { @class = "no-decoration" })</span>
                         }
                         else
                         {
                             Conference.Models.Participant user = (Conference.Models.Participant)Session["user"];
                             if (@user.Nom == "admin")
-                                {
-                                    @Html.ActionLink("Create a conference", "AddConference", "Home")
-                                }
+                            {
+                                @Html.ActionLink("Create a conference", "AddConference", "Home", new { @class = "no-decoration" })
+                            }
+                            else if (user.Nom == "superAdmin")
+                            {
+                                <span style="margin-right:5px">@Html.ActionLink("Create a conference", "AddConference", "Home", new { @class = "no-decoration" })</span>
+                                <span>@Html.ActionLink("Gestion admin", "GetGestion", "Home", new { @class = "no-decoration" })</span>
+                            }
 
                         }
-                    </button>
+                    </li>
+                    @*Contact*@
+                    <li class="nav-item"> @Html.ActionLink("Nous Contacter", "Contact", "Home", new { @class = "no-decoration" })</li>
 
-                </div>
+                    @*Login et logout*@
+                    <li class="nav-item">
+                        @if (Session["user"] == null)
+                        {
+                            <span class="log">@Html.ActionLink("Login", "Login", "Home", new { @class = "no-decoration" })</span>
+
+                        }
+                        else
+                        {
+                            <span class="log" style="text-decoration:none;color:green">@Html.ActionLink("Logout", "Logout", "Home" , new { @class = "no-decoration" })</span>
+                        }
+                    </li>
+
+                </ul>
             </div>
-            <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
     </nav>
-    <!-- Navbar -->
-    <!--Hero-->
-    <section class="hero" style="margin-top:20px">
-    </section>
 
+   
 
-    <div class="container body-content">
-        @RenderBody()
-
-    </div><hr />
+    <div class="body-content" style="margin-top:94px;margin-left:0;margin-right:0;width:100%">
+        
+            @RenderBody()
+     
+    </div>
   
+    <hr />
+   
+    <hr />
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -161,7 +132,7 @@
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
-            </div><hr/>
+            </div><hr />
             <div class="row">
                 <div class="col-lg-12">
                     <p class="text-center">© 2023 Your Company. All rights reserved.</p>

@@ -7,7 +7,7 @@
 <style>
     .main {
         width: 100%;
-        height:auto;
+        height: auto;
         padding: 0;
         margin: 0;
     }
@@ -36,93 +36,118 @@
         line-height: 1.5;
         margin-bottom: 15px;
     }
-  
+
+    .card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
 </style>
-<div class="main">
-    <section class="section-conferences">
-        <h2>Notre Application Web de Gestion de Conférences</h2>
-        <p>Notre application web de gestion de conférences facilite l'organisation, la coordination et la participation à des conférences. Elle offre une gamme complète de fonctionnalités pour les organisateurs et les participants.</p>
 
-        <div class="features-container">
-            <div class="feature">
-                <h3>Organisateurs</h3>
-                <p>En tant qu'organisateur, vous pouvez créer et gérer des événements en spécifiant les détails, personnalisant les options d'inscription et en utilisant notre système de gestion des inscriptions.</p>
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Welcome To Our Conferences!</div>
+        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+    </div>
+</header>
+
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">E-Commerce</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
-
-            <div class="feature">
-                <h3>Participants</h3>
-                <p>Pour les participants, notre application propose une interface conviviale pour parcourir, s'inscrire et payer en ligne. Elle est également compatible avec les appareils mobiles pour un accès facile et une gestion pratique.</p>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Responsive Design</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
-
-            <div class="feature">
-                <h3>Fonctionnalités Avancées</h3>
-                <p>Nous prenons en charge des fonctionnalités avancées telles que la gestion des intervenants, la planification des sessions parallèles et l'envoi de notifications aux participants.</p>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Web Security</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>
+    </div>
+</section>
 
-        <p>Que vous soyez un organisateur passionné ou un participant enthousiaste, notre application de gestion de conférences vous accompagne à chaque étape du processus.</p>
-        <p>N'hésitez pas à explorer notre application et à nous contacter pour des expériences de conférence exceptionnelles et mémorables !</p>
-        <hr />
-    </section>
-      
-    <section class="section2">
-        <h2>Section 2</h2>
-        <img src="https://exemple.com/chemin_vers_image2.jpg" alt="Image 2">
-        <p>Nullam nec enim faucibus, faucibus libero sed, tempus velit. Fusce non erat dolor. Phasellus a mi eu nulla consequat suscipit et at quam. Sed et pretium mauris.</p>
-    </section>
 
-    <section class="section3" style="height:auto;">
-        <center>
-            <h2>NOS CONFERENCIERS</h2>
-        </center><br />
-        <div class="container">
-            <div class="row">
-                <!-- Team Member 1 -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title mb-0">Team Huddle</h5>
-                            <div class="card-text text-black-50">Web Developer</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 2 -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title mb-0">Team Huddle</h5>
-                            <div class="card-text text-black-50">Web Developer</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 3 -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title mb-0">Team Huddle</h5>
-                            <div class="card-text text-black-50">Web Developer</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 4 -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <img src="https://source.unsplash.com/7u5mwbu7qLg/500x350" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title mb-0">Team Huddle</h5>
-                            <div class="card-text text-black-50">Web Developer</div>
-                        </div>
+<section class="section3" style="height:auto;">
+    <center>
+        <h2>NOS CONFERENCIERS</h2>
+    </center><br />
+    <div class="container">
+        <div class="row">
+            <!-- Team Member 1 -->
+            <div class="col-md-6 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="~/Content/images/cat1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Huddle</h5>
+                        <div class="card-text text-black-50">Adama Florin</div>
+                        <div class="card-text text-black-50">TECH LEAD</div>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
-
+            <!-- Team Member 2 -->
+            <div class="col-md-6 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="~/Content/images/cat2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Huddle</h5>
+                        <div class="card-text text-black-50">Adama Florin</div>
+                        <div class="card-text text-black-50">FULL STACK DEVELOPPER</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+        <!-- /.row -->
 
+    </div>
+</section>
+<!-- Clients-->
+<div class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="~/Content/assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="~/Content/assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="~/Content/assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="~/Content/assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 
